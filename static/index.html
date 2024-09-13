@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best MDP Group 28</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+    <h1>Best MDP Group 28's Robot Movement Area Simulator</h1>
+    <div id="container">
+        <canvas id="grid" width="630" height="630"></canvas>
+
+        <!-- Form Container for Obstacles -->
+        <div id="formContainer">
+            <h3>Obstacles</h3>
+            <div class="form-group">
+                <label for="xCoord">X Coordinate:</label>
+                <input type="number" id="xCoord" min="0">
+            </div>
+            <div class="form-group">
+                <label for="yCoord">Y Coordinate:</label>
+                <input type="number" id="yCoord" min="0">
+            </div>
+            <div class="form-group">
+                <label for="direction">Direction:</label>
+                <select id="direction">
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                </select>
+            </div>
+            <button id="addObstacle">Add Obstacle</button>
+        </div>
+    </div>
+
+    <div id="robot-position">Position: (x: -, y: -), Direction: -</div>
+
+    <div id="buttonsContainer">
+        <button id="get-results">Get Pathfinding Results</button>
+        <button id="step-button">Step by Step</button>
+    </div>
+
+    <div id="commands"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>

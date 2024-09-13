@@ -1,0 +1,112 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container to hold canvas and form side by side */
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Canvas border */
+canvas {
+    border: 1px solid black;
+}
+
+/* Form container styling */
+#formContainer {
+    margin-left: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 250px; /* Adjust width as needed */
+}
+
+/* Form title */
+#formContainer h3 {
+    margin-top: 0;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Form group label styling */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Form group input styling */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Buttons container styling */
+#buttonsContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Commands container styling */
+#commands {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 630px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Command item styling */
+.command-item {
+    margin: 5px;
+    padding: 5px;
+    background-color: #eef;
+    border-radius: 3px;
+    border: 1px solid #ccd;
+    width: 120px; /* Control the width to ensure proper column alignment */
+}
+
+/* Highlighting the current command */
+.command-item.current {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Command item for previously executed commands */
+.command-item.executed {
+    color: #777;
+    text-decoration: line-through;
+}
