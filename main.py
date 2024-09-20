@@ -1,3 +1,4 @@
+import os
 import time
 from algo.algo import MazeSolver 
 from flask import Flask, request, jsonify, send_from_directory
@@ -10,8 +11,10 @@ import numpy as np
 
 app = Flask(__name__)
 CORS(app)
-model = load_model()
+# model = load_model()
 # model = None
+model = YOLO("/Users/evahans/Downloads/model_min_loss_3.h5")
+
 
 @app.route('/')
 def serve_index():
@@ -110,20 +113,41 @@ def image_predict():
     This is the main endpoint for the image prediction algorithm
     :return: a json object with a key "result" and value a dictionary with keys "obstacle_id" and "image_id"
     """
+    
     file = request.files['file']
     filename = file.filename
-    file.save(os.path.join('uploads', filename))
+
+    # Log the filename
+    print(f"Received file: {filename}")
+
+    if filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+    
+    current_dir = os.getcwd()
+    upload_dir = os.path.join(current_dir, 'uploads')
+
+    if not os.path.exists(upload_dir):
+        os.makedirs(upload_dir)
+
+    file.save(os.path.join(upload_dir, filename))
+
+    
+    # file.save(os.path.join('uploads', filename))
+
     # filename format: "<timestamp>_<obstacle_id>_<signal>.jpeg"
     constituents = file.filename.split("_")
     obstacle_id = constituents[1]
 
     ## Week 8 ## 
-    signal = constituents[2].strip(".jpg")
-    image_id = predict_image(filename, model, signal)
+    # signal = constituents[2].strip(".jpg")
+    # image_id = predict_image(filename, model, signal)
 
     ## Week 9 ## 
     # We don't need to pass in the signal anymore
     # image_id = predict_image_week_9(filename,model)
+
+    ## Tuan's Implementation ##
+    image_id = model.predict(os.path.join(upload_dir, filename))
 
     # Return the obstacle_id and image_id
     result = {
